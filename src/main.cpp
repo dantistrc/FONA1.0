@@ -47,9 +47,6 @@ void setup() {
     //pinMode(outPin6, OUTPUT);       // выход 6 NO digital input!!!!!!!!!!!!!!!
     DDRC = 0;                       // set pins A0-A7 as input, modeInpit() in Arduino
     //pinMode(AinPin6,analogInPinToBit);
-
-    // put your setup code here, to run once:
-    //int result = myFunction(2, 3);
 }
 
 void loop() {
