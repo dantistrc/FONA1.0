@@ -26,18 +26,17 @@ int outPin7 = 1;                 // выход 6
   boolean in5 = false;
   //boolean in6 = false;
 
-int val = 0;                     // переменная для хранения значения
-unsigned long currentMillis;
-unsigned long previousMillis;
-const long interval = 600;  // interval at which to beep (milliseconds)
-int beepState = LOW;             // BEEP
-int beepOn = LOW;             // ON/OFF BEEP
-int timeset;
+int val = 0;                      // переменная для хранения значения
+unsigned long currentMillis;      //for BEEP
+unsigned long previousMillis;     //for BEEP
+const long interval = 600;        // interva`l at which to beep (milliseconds)
+int beepState = LOW;              // BEEP
+int beepOn = LOW;                 // ON/OFF BEEP
+//int timeset;                    // For analog input
 
 
 void setup() {
-    Serial.begin(9600);
-
+    Serial.begin(9600);             //Serial
     pinMode(ledPin, OUTPUT);        // выход для светодиод 13 (pin)
     pinMode(outPin0, OUTPUT);       // выход 0
     pinMode(outPin1, OUTPUT);       // выход 1
