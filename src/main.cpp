@@ -33,7 +33,14 @@ const long interval = 600;        // interva`l at which to beep (milliseconds)
 int beepState = LOW;              // BEEP
 int beepOn = LOW;                 // ON/OFF BEEP
 //int timeset;                    // For analog input
-
+void alloff()
+     {
+      digitalWrite(outPin0,LOW);                     // pin D8 = 0
+      digitalWrite(outPin1,LOW);                     // pin D7 = 0
+      digitalWrite(outPin2,LOW);                     // pin D6 = 0
+      digitalWrite(outPin3,LOW);                     // pin D5 = 0
+      beepOn = LOW;                                  // beep OFF     
+    }
 
 void setup() {
     Serial.begin(9600);             //Serial
@@ -47,6 +54,7 @@ void setup() {
     //pinMode(outPin6, OUTPUT);       // выход 6 NO digital input!!!!!!!!!!!!!!!
     DDRC = 0;                       // set pins A0-A7 as input, modeInpit() in Arduino
     //pinMode(AinPin6,analogInPinToBit);
+     
 }
 
 void loop() {
@@ -57,52 +65,59 @@ void loop() {
 
     switch (data)
     {
-      case 0:                                        //NUL
-      digitalWrite(outPin0,LOW);                     // pin D8 = 0
-      digitalWrite(outPin1,LOW);                     // pin D7 = 0
-      digitalWrite(outPin2,LOW);                     // pin D6 = 0
-      digitalWrite(outPin3,LOW);                     // pin D5 = 0
-      beepOn = LOW;                                  // beep OFF            
+      case 31:   
+      alloff();                                        //NUL all
+      //digitalWrite(outPin0,LOW);                     // pin D8 = 0
+      //digitalWrite(outPin1,LOW);                     // pin D7 = 0
+      //digitalWrite(outPin2,LOW);                     // pin D6 = 0
+      //digitalWrite(outPin3,LOW);                     // pin D5 = 0
+      //beepOn = LOW;                                  // beep OFF            
       break;
-      case 16:                                       //Pedal
-      digitalWrite(outPin0,LOW);                     // pin D8 = 0
-      digitalWrite(outPin1,LOW);                     // pin D7 = 0
-      digitalWrite(outPin2,LOW);                     // pin D6 = 0
-      digitalWrite(outPin3,LOW);                     // pin D5 = 0
-      beepOn = LOW;                                  // beep OFF            
+      case 15: 
+      alloff();                                         //Pedal
+      //digitalWrite(outPin0,LOW);                     // pin D8 = 0
+      //digitalWrite(outPin1,LOW);                     // pin D7 = 0
+      //digitalWrite(outPin2,LOW);                     // pin D6 = 0
+      //digitalWrite(outPin3,LOW);                     // pin D5 = 0
+      //beepOn = LOW;                                  // beep OFF            
       break;
-      case 17:                                       // T1 + PEDAL
+      case 14:                                       // T1 + PEDAL
       digitalWrite(outPin0,HIGH);                    // pin D8 = 1
       beepOn = LOW;                                  // beep OFF
       break;
-      case 18:                                       // T2 + PEDAL
+      case 13:                                       // T2 + PEDAL
       digitalWrite(outPin1,HIGH);                    // pin D7 = 1
       beepOn = LOW;                                  // beep OFF
       break;
-      case 20:                                       // T3 + PEDAL
+      case 11:                                       // T3 + PEDAL
       digitalWrite(outPin2,HIGH);                    // pin D6 = 1
       beepOn = LOW;                                  // beep OFF
       break;
-      case 24:                                       // T4 + PEDAL
+      case 7:                                       // T4 + PEDAL
       digitalWrite(outPin3,HIGH);                    // pin D5 = 1
       beepOn = LOW;                                  // beep OFF
       break;
-      case 1:
+
+      case 30:
       beepOn = LOW;                                  // beep OFF 
+      digitalWrite(outPin0,LOW);                    // pin D8 = 1
       break;
-      case 2:
+      case 29:
+      beepOn = LOW;                                  // beep OFF
+      digitalWrite(outPin1,LOW);                    // pin D7 = 1 
+      break;
+      case 27:
       beepOn = LOW;                                  // beep OFF 
+      digitalWrite(outPin2,LOW);                    // pin D6 = 1
       break;
-      case 4:
+      case 23:
       beepOn = LOW;                                  // beep OFF 
+      digitalWrite(outPin3,LOW);                    // pin D5 = 1
       break;
-      case 8:
-      beepOn = LOW;                                  // beep OFF 
-      break;
-      case 32:
-      beepOn = LOW;                                  // beep OFF 
-      break;
-      default:
+      //case 15:
+      //beepOn = LOW;                                  // beep OFF 
+      //break;
+      default:                                       // Alarm 
       digitalWrite(outPin0,LOW);                     // pin D8 = 0
       digitalWrite(outPin1,LOW);                     // pin D7 = 0
       digitalWrite(outPin2,LOW);                     // pin D6 = 0
@@ -130,4 +145,5 @@ void loop() {
           digitalWrite(outPin5,LOW);                // BEEP OFF
           }
     }
+   
 }  
